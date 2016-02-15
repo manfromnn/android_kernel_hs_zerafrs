@@ -6,19 +6,19 @@
 #echo 'Start building...'
 
 # Set options
-export ARCH=arm CROSS_COMPILE=../android_toolchain/linaro-4.9/bin/arm-linux-androideabi-
-export KBUILD_BUILD_USER=assusdan
-export KBUILD_BUILD_HOST=SRT
+export ARCH=arm CROSS_COMPILE=../linaro-4.9/bin/arm-linux-androideabi-
+export KBUILD_BUILD_USER=manfromnn
+export KBUILD_BUILD_HOST=ms-7756
 
 #For checking errors
 echo 'Remove kernel...'
 rm -rf arch/arm/boot/zImage
 
 
-echo 'Configure Pure F'
+echo 'Configure Zera F'
 make aeon6582_wt_nj_l_defconfig >/dev/null
 
-echo 'Building Pure F...'
+echo 'Building Zera F...'
 make -j4 zImage >/dev/null 2>buildlog.log
 
 #check errors
@@ -28,7 +28,7 @@ then
 fi
 
 #if OK
-echo 'Moving Pure F'
+echo 'Moving Zera F'
 mv arch/arm/boot/zImage /var/www/compiled/zImage-puref
 
 
